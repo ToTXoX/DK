@@ -42,8 +42,17 @@
     }
   };
   const picks = [...document.querySelectorAll('.pick')];
-  const detail = $('detail'), idle = $('idle');
+  const detail = $('detail'), idle = $('idle'), info = $('info'), back = $('back');
   let current = 'zuzu';
+
+  /* phones: the info block lives inside the pad screen (list ⇄ detail); desktop: beside the pad */
+  const small = matchMedia('(max-width: 820px)');
+  const place = () => {
+    if (small.matches) inside.appendChild(detail);
+    else { info.insertBefore(detail, info.querySelector('noscript')); inside.classList.remove('reading'); }
+  };
+  place();
+  small.addEventListener('change', place);
 
   function show(key) {
     const d = DATA[key];
@@ -58,7 +67,14 @@
     $('i-link').href = d.url;
     $('i-host').textContent = d.host + ' ↗';
     detail.classList.remove('in'); void detail.offsetWidth; detail.classList.add('in');
-    history.replaceState(null, '', '#' + key);
+  }
+  const setHash = (key) => history.replaceState(null, '', key ? '#' + key : location.pathname + location.search);
+
+  /* open an item: desktop just updates the side; phones flip the screen to the detail page */
+  function select(key) {
+    show(key);
+    setHash(key);
+    if (small.matches) { inside.classList.add('reading'); back.focus({ preventScroll: true }); }
   }
 
   function setOpen(open) {
@@ -68,19 +84,26 @@
     pull.setAttribute('aria-expanded', String(open));
     idle.hidden = open;
     detail.hidden = !open;
-    if (open) show(current);
-    else history.replaceState(null, '', location.pathname + location.search);
+    inside.classList.remove('reading');
+    if (open) { show(current); if (!small.matches) setHash(current); }
+    else setHash(null);
   }
 
   cover.addEventListener('click', () => setOpen(!stage.classList.contains('open')));
-  picks.forEach((b) => b.addEventListener('click', () => show(b.dataset.key)));
+  picks.forEach((b) => b.addEventListener('click', () => select(b.dataset.key)));
+  back.addEventListener('click', () => {
+    inside.classList.remove('reading');
+    setHash(null);
+    picks.find((b) => b.dataset.key === current)?.focus({ preventScroll: true });
+  });
 
   /* deep link: #zuzu, #x, #2w open the pad on that item */
   const fromHash = () => {
     const key = decodeURIComponent(location.hash.slice(1));
     if (!DATA[key]) return;
     current = key;
-    if (stage.classList.contains('open')) show(key); else setOpen(true);
+    if (!stage.classList.contains('open')) setOpen(true);
+    select(key);
   };
   fromHash();
   window.addEventListener('hashchange', fromHash);
