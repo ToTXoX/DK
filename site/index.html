@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DK集市</title>
+<meta name="description" content="ZUZU · 庭院日和、冒冒 Peekala、二呜兄弟 · 赛道竞速。">
+<meta name="theme-color" content="#E4D9BF">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DK集市">
+<meta property="og:description" content="ZUZU · 庭院日和、冒冒 Peekala、二呜兄弟 · 赛道竞速。">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Long+Cang&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="assets/dk.css">
+<script src="assets/dk.js" defer></script>
+</head>
+<body>
+<!-- drawings shared by the cover strips and the shelf -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="2.2"/>
+    </filter>
+    <clipPath id="cupclip"><rect x="-20" y="-80" width="200" height="117"/></clipPath>
+
+    <symbol id="mudkip" viewBox="0 0 200 140">
+      <g class="s-ink" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round">
+        <path class="f-water2" d="M146 98 C158 72 172 56 196 50 C194 74 186 98 164 112 Z"/>
+        <path class="f-none" stroke-width="2.4" d="M156 98 C166 82 176 70 188 62"/>
+        <path class="f-water2" d="M74 44 C66 22 80 6 102 4 C96 18 100 32 110 48 Z"/>
+        <path class="f-none" stroke-width="2.4" d="M84 40 C82 26 88 16 98 11"/>
+        <rect class="f-water" x="58" y="110" width="20" height="20" rx="9"/>
+        <rect class="f-water" x="94" y="112" width="20" height="18" rx="9"/>
+        <rect class="f-water" x="126" y="108" width="20" height="18" rx="9"/>
+        <path class="f-water" d="M30 90 C26 62 50 40 84 40 C112 40 128 56 132 74 C148 76 162 88 160 102 C158 116 140 124 118 122 C100 126 70 128 54 120 C38 114 31 104 30 90 Z"/>
+        <path class="f-none" stroke-width="2.2" d="M50 112 C68 120 96 121 114 116"/>
+        <path class="f-gill" stroke-width="2.8" d="M82 90 L66 80 L71 92 L55 95 L71 101 L63 113 L82 101 Z"/>
+        <circle class="f-ink" stroke="none" cx="54" cy="71" r="5.6"/>
+        <circle class="f-white" stroke="none" cx="55.9" cy="69" r="1.9"/>
+        <path class="f-none" d="M33 94 Q44 103 56 98"/>
+      </g>
+    </symbol>
+
+    <symbol id="cup" viewBox="0 -60 160 235">
+      <g class="s-ink" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round">
+        <ellipse class="f-paper" cx="80" cy="34" rx="66" ry="16"/>
+        <ellipse class="f-water" stroke-width="2.4" cx="80" cy="36" rx="57" ry="11"/>
+        <g clip-path="url(#cupclip)"><use href="#mudkip" x="4" y="-54" width="152" height="106"/></g>
+        <path class="f-none" stroke-width="2.4" d="M22 34 q6 -4 12 0 M128 33 q6 -4 12 0"/>
+        <path class="f-paper" d="M14 34 A66 16 0 0 0 146 34 L130 160 Q80 172 30 160 Z"/>
+        <path class="f-must" stroke-width="2.4" d="M20 76 Q80 92 140 76 L138 92 Q80 108 22 92 Z"/>
+        <rect class="f-paper" stroke-width="2.4" x="40" y="102" width="24" height="56" rx="2"/>
+        <text x="52" y="108" class="f-bean" stroke="none" style="writing-mode:vertical-rl;font:900 15px var(--f-cn);letter-spacing:1px">今日份</text>
+        <circle class="f-water2" cx="102" cy="128" r="22"/>
+        <circle class="f-none" stroke-width="2.4" cx="95" cy="122" r="5"/>
+        <circle class="f-none" stroke-width="2.4" cx="108" cy="133" r="7"/>
+        <circle class="f-none" stroke-width="2.4" cx="110" cy="117" r="3"/>
+      </g>
+    </symbol>
+
+    <symbol id="car" viewBox="0 0 160 84">
+      <g class="s-ink" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round">
+        <path class="f-must" d="M14 36 L8 22 L30 22 L28 36 Z"/>
+        <path class="f-paper" d="M10 54 L18 36 L60 31 L76 18 L114 18 L126 31 L148 35 L154 54 Z"/>
+        <path class="f-water2" stroke-width="2.6" d="M68 31 L80 23 L110 23 L118 31 Z"/>
+        <path class="f-bean" stroke-width="2.4" d="M18 43 L150 43 L152 48 L14 48 Z"/>
+        <circle class="f-paper" stroke-width="2.4" cx="92" cy="38" r="8"/>
+        <text x="92" y="42.5" text-anchor="middle" class="f-ink" stroke="none" style="font:900 12px var(--f-round)">2</text>
+        <circle class="f-ink" cx="40" cy="58" r="15"/><circle class="f-paper" stroke-width="2" cx="40" cy="58" r="6"/>
+        <circle class="f-ink" cx="124" cy="58" r="15"/><circle class="f-paper" stroke-width="2" cx="124" cy="58" r="6"/>
+      </g>
+    </symbol>
+
+    <symbol id="matchpeek" viewBox="0 0 130 100">
+      <g class="s-ink" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round">
+        <path class="f-must" d="M8 46 L30 30 L110 30 L88 46 Z"/>
+        <path class="f-white" d="M48 39 C46 16 80 14 80 37 Z"/>
+        <circle class="f-ink" stroke="none" cx="58" cy="29" r="3"/><circle class="f-ink" stroke="none" cx="70" cy="29" r="3"/>
+        <path class="f-ink" stroke-width="2" d="M40 40 L48 34 L92 34 L84 40 Z"/>
+        <path class="f-paper" d="M8 46 H88 V88 H8 Z"/>
+        <path class="f-ink" stroke="none" d="M8 56 H88 V62 H8 Z"/>
+        <circle class="f-paper" stroke-width="2.4" cx="48" cy="74" r="8"/>
+        <path class="f-umber" d="M88 46 L110 30 V72 L88 88 Z"/>
+      </g>
+    </symbol>
+
+    <symbol id="sprout" viewBox="0 0 60 84">
+      <g class="s-ink" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <path class="f-none" d="M30 50 C30 38 31 30 30 20"/>
+        <path class="f-leaf" d="M30 30 C20 30 10 22 10 12 C22 12 30 18 30 30 Z"/>
+        <path class="f-leaf" d="M30 24 C40 24 50 16 52 6 C40 6 31 12 30 24 Z"/>
+        <path class="f-umber" d="M14 54 H46 L41 80 H19 Z"/>
+        <path class="f-must" d="M9 46 H51 V56 H9 Z"/>
+      </g>
+    </symbol>
+
+    <symbol id="sprout-only" viewBox="0 0 60 60">
+      <g class="s-ink" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <path class="f-none" d="M30 60 C30 46 31 36 30 24"/>
+        <path class="f-leaf" d="M30 36 C20 36 10 28 10 18 C22 18 30 24 30 36 Z"/>
+        <path class="f-leaf" d="M30 30 C40 30 50 22 52 12 C40 12 31 18 30 30 Z"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<main class="wrap">
+  <h1 class="sr">DK集市</h1>
+
+  <div class="pad">
+    <div class="stage" id="stage">
+      <div class="inside" id="inside" inert>
+        <ol aria-label="作品">
+              <li><button class="pick" type="button" data-key="zuzu" aria-pressed="false"><span class="ico"><svg viewBox="0 0 200 140" aria-hidden="true"><use href="#mudkip"/></svg></span><span><b>庭院日和</b><small>ZUZU</small></span></button></li>
+              <li><button class="pick" type="button" data-key="x" aria-pressed="false"><span class="ico"><svg viewBox="0 0 130 100" aria-hidden="true"><use href="#matchpeek"/></svg></span><span><b>冒冒</b><small>PEEKALA</small></span></button></li>
+              <li><button class="pick" type="button" data-key="2w" aria-pressed="false"><span class="ico"><svg viewBox="0 0 160 84" aria-hidden="true"><use href="#car"/></svg></span><span><b>二呜兄弟</b><small>RACING</small></span></button></li>
+        </ol>
+      </div>
+
+      <div class="cover" id="cover">
+            <div class="art" id="cover-art" aria-hidden="true">
+              <svg class="frame" viewBox="0 0 300 400" preserveAspectRatio="none">
+                <g class="rough s-ink f-none" stroke-linecap="round">
+                  <path stroke-width="5.5" d="M7 23 H293 M17 13 V393 M283 13 V393 M7 383 H293"/>
+                  <rect stroke-width="3" x="29" y="36" width="242" height="334"/>
+                </g>
+              </svg>
+              <p class="a-kicker">新作オススメ</p>
+              <p class="a-en1">HANDMADE TASTE</p>
+              <p class="a-en2">LITTLE WEB GOODS</p>
+              <svg class="a-sprout rough" viewBox="0 0 60 84"><use href="#sprout"/></svg>
+              <div class="a-banner"><b>DK集市</b></div>
+              <div class="a-tag">新作上架中</div>
+              <svg class="a-burst" viewBox="0 0 60 50"><g class="f-ink"><path d="M6 30 L14 8 L22 10 L12 33 Z"/><path d="M26 34 L40 12 L47 16 L31 38 Z"/><path d="M33 44 L54 36 L56 43 L35 50 Z"/></g></svg>
+              <svg class="a-cup rough" viewBox="0 -60 160 235"><use href="#cup"/></svg>
+              <svg class="a-match rough" viewBox="0 0 130 100"><use href="#matchpeek"/></svg>
+              <svg class="a-car rough" viewBox="0 0 160 84"><use href="#car"/></svg>
+              <p class="a-fine"><span>图案仅供参考，</span><span>实际内容请以开封后为准。</span></p>
+              <span class="a-crease" style="left:25%"></span>
+              <span class="a-crease" style="left:50%"></span>
+              <span class="a-crease" style="left:75%"></span>
+            </div>
+      </div>
+      <button class="pull" id="pull" type="button" aria-controls="inside" aria-expanded="false" aria-label="掀开"><span class="pf" aria-hidden="true">掀开</span><span class="pb" aria-hidden="true">合上</span></button>
+    </div>
+  </div>
+
+  <section class="info" aria-live="polite">
+    <p class="idle" id="idle"><span class="left">← </span><span class="up">↑ </span>掀开看看</p>
+    <div class="detail" id="detail" hidden>
+      <p class="no" id="i-no">No.01 / 03</p>
+      <h2 id="i-name">庭院日和</h2>
+      <p class="en" id="i-en">ZUZU · GARDEN DAYS</p>
+      <p class="desc" id="i-desc"></p>
+      <ul class="chips" id="i-chips"></ul>
+      <a class="go" id="i-link" href="https://zuzu.usdts.de" target="_blank" rel="noopener"><b>开封</b><span id="i-host">zuzu.usdts.de ↗</span></a>
+    </div>
+    <noscript>
+      <div class="nojs">
+        <a class="go" href="https://zuzu.usdts.de"><b>庭院日和</b><span>zuzu.usdts.de ↗</span></a>
+        <a class="go" href="https://x.usdts.de"><b>冒冒</b><span>x.usdts.de ↗</span></a>
+        <a class="go" href="https://2w.usdts.de"><b>二呜兄弟</b><span>2w.usdts.de ↗</span></a>
+      </div>
+    </noscript>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,771 @@
+<title>DK</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;800;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Long+Cang&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: a print-proof of a folding iPad-cover package on a kraft table, then a hand-drawn goods shelf, an ingredients label, and the maker's panel. */
+:root {
+  /* color: retro package print, single deliberate light look */
+  --table: #E4D9BF;
+  --paper: #F2EAD5;
+  --kraft: #D5BE8F;
+  --ink: #1C2537;
+  --ink-2: #27324B;
+  --mustard: #CDB163;
+  --gray: #999285;
+  --umber: #6B5C48;
+  --bean: #9B4B54;
+  --water: #A7C7D7;
+  --water-2: #CFE2EA;
+  --gill: #E09E62;
+  --leaf: #A2A15D;
+  --white: #FBF7EB;
+  /* type */
+  --f-cn: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --f-round: "M PLUS Rounded 1c", "Noto Sans SC", "Hiragino Maru Gothic ProN", sans-serif;
+  --f-hand: "Long Cang", "Kaiti SC", "STKaiti", cursive;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { background: var(--table); }
+body {
+  background: var(--table);
+  color: var(--ink);
+  font-family: var(--f-cn);
+  font-size: 15px;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 48px;
+  background-image:
+    radial-gradient(rgba(28,37,55,.05) 1px, transparent 1.2px),
+    radial-gradient(rgba(107,92,72,.06) 1px, transparent 1.2px);
+  background-size: 7px 7px, 11px 11px;
+  background-position: 0 0, 3px 5px;
+}
+.wrap { max-width: 1120px; margin: 0 auto; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+a { color: inherit; }
+:focus-visible { outline: 3px dashed var(--bean); outline-offset: 4px; }
+
+/* svg paint helpers (used inside symbols too) */
+.s-ink { stroke: var(--ink); }
+.f-ink { fill: var(--ink); } .f-paper { fill: var(--paper); } .f-water { fill: var(--water); }
+.f-water2 { fill: var(--water-2); } .f-gill { fill: var(--gill); } .f-must { fill: var(--mustard); }
+.f-umber { fill: var(--umber); } .f-leaf { fill: var(--leaf); } .f-white { fill: var(--white); }
+.f-bean { fill: var(--bean); } .f-none { fill: none; } .f-kraft { fill: var(--kraft); }
+.rough { filter: url(#rough); }
+
+/* ---------- top bar ---------- */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; flex-wrap: wrap; }
+.logo { font-family: var(--f-round); font-weight: 900; font-size: 18px; letter-spacing: .12em; background: var(--ink); color: var(--paper); padding: 2px 10px 2px 12px; border-radius: 3px; }
+.top nav { display: flex; gap: 20px; font-size: 14px; font-weight: 500; }
+.top nav a { text-decoration: none; border-bottom: 2px solid transparent; }
+.top nav a:hover { border-bottom-color: var(--mustard); }
+.top nav small { font-family: var(--f-round); color: var(--gray); font-size: 10px; letter-spacing: .1em; margin-left: 4px; }
+
+/* ---------- hero / proof ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 470px) minmax(0, 1fr); gap: 56px; align-items: center; padding-block: 12px 64px; }
+.proof-frame { position: relative; padding: 26px; }
+.crop { position: absolute; width: 18px; height: 18px; border-color: var(--ink); border-style: solid; border-width: 0; opacity: .7; }
+.crop.tl { top: 0; left: 0; border-right-width: 1px; border-bottom-width: 1px; }
+.crop.tr { top: 0; right: 0; border-left-width: 1px; border-bottom-width: 1px; }
+.crop.bl { bottom: 0; left: 0; border-right-width: 1px; border-top-width: 1px; }
+.crop.br { bottom: 0; right: 0; border-left-width: 1px; border-top-width: 1px; }
+.reg { position: absolute; top: 2px; left: 50%; width: 18px; height: 18px; transform: translateX(-50%); }
+
+.stage { position: relative; width: 100%; aspect-ratio: 3 / 4; container-type: inline-size; perspective: 2200px; }
+.inside {
+  position: absolute; inset: 0; background: var(--paper);
+  border-radius: 2.4cqw 4cqw 4cqw 2.4cqw;
+  box-shadow: inset 0 0 0 1px rgba(28,37,55,.15), inset 0 0 40px rgba(107,92,72,.18);
+  padding: 9cqw 7cqw 7cqw 31cqw;
+  display: flex; flex-direction: column; gap: 3.2cqw;
+}
+.inside h2 { margin: 0; font-family: var(--f-round); font-weight: 800; font-size: 5.6cqw; line-height: 1.2; }
+.inside h2 small { display: block; font-size: 2.8cqw; color: var(--gray); letter-spacing: .18em; font-weight: 800; }
+.inside ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2.4cqw; }
+.inside li a { display: grid; grid-template-columns: 12cqw 1fr; gap: 3cqw; align-items: center; text-decoration: none; padding: 2cqw 0; border-bottom: 2px dashed rgba(28,37,55,.35); }
+.inside li svg { width: 12cqw; height: 9cqw; }
+.inside li b { display: block; font-size: 3.6cqw; line-height: 1.3; }
+.inside li span { font-size: 2.7cqw; color: var(--umber); }
+.inside .note { font-family: var(--f-hand); font-size: 4.4cqw; color: var(--umber); margin: auto 0 0; line-height: 1.3; }
+.stamp {
+  position: absolute; right: 7cqw; top: 7cqw; width: 19cqw; height: 19cqw; border-radius: 50%;
+  border: .7cqw solid var(--bean); color: var(--bean); display: grid; place-items: center; text-align: center;
+  font-weight: 900; font-size: 3.4cqw; line-height: 1.15; transform: rotate(-14deg); opacity: .85;
+}
+.stamp small { display: block; font-family: var(--f-round); font-size: 2cqw; letter-spacing: .14em; }
+
+.cover { position: absolute; inset: 0; transform-style: preserve-3d; cursor: pointer; }
+.cover > .art { box-shadow: 0 2cqw 5cqw rgba(28,37,55,.25); }
+.seg { position: absolute; top: 0; left: 0; width: 25%; height: 100%; transform-style: preserve-3d; transform-origin: left center; transition: transform 1s cubic-bezier(.65,.02,.25,1); }
+.seg .seg { left: 100%; width: 100%; }
+.face { position: absolute; inset: 0; overflow: hidden; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.face .art { width: 400%; }
+.s0 > .front { border-radius: 2.4cqw 0 0 2.4cqw; box-shadow: 0 2cqw 5cqw rgba(28,37,55,.22); }
+.s3 > .front { border-radius: 0 4cqw 4cqw 0; }
+.back {
+  transform: rotateY(180deg); background: var(--ink-2);
+  background-image: repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 2px, transparent 2px 5px);
+  display: grid; place-items: center;
+  box-shadow: inset -1px 0 0 rgba(255,255,255,.12);
+}
+.back span { writing-mode: vertical-rl; font-family: var(--f-round); font-weight: 900; color: var(--mustard); font-size: 7cqw; letter-spacing: .3em; opacity: .9; }
+.s1 > .back, .s2 > .back { border-radius: 0; }
+.s3 > .back { border-radius: 4cqw 0 0 4cqw; box-shadow: 1.5cqw 2cqw 4cqw rgba(28,37,55,.35); }
+.stage.open .s1 { transform: translateZ(2px) rotateY(-180deg); }
+.stage.open .s2 { transform: translateZ(-2px) rotateY(180deg); transition-delay: .12s; }
+.stage.open .s3 { transform: translateZ(2px) rotateY(-180deg); transition-delay: .24s; }
+.stage:not(.open) .s1 { transition-delay: .24s; }
+.stage:not(.open) .s2 { transition-delay: .12s; }
+
+.pull {
+  position: absolute; right: -4.6cqw; top: 46%; z-index: 5; border: 0; cursor: pointer;
+  background: var(--mustard); color: var(--ink); font: 800 3cqw/1 var(--f-round);
+  writing-mode: vertical-rl; letter-spacing: .25em; padding: 3cqw 1.6cqw; border-radius: 0 1.6cqw 1.6cqw 0;
+  box-shadow: 2px 3px 0 var(--ink); transition: transform .2s;
+}
+.pull:hover { transform: translateX(3px); }
+
+/* cover artwork: every size in cqw so the four cloned strips match */
+.art { position: absolute; top: 0; left: 0; width: 100%; height: 100%; container-type: inline-size; background: var(--paper); overflow: hidden; font-family: var(--f-round); }
+.art::after { /* paper grain */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(rgba(107,92,72,.09) 1px, transparent 1.3px); background-size: 1.6cqw 1.6cqw; mix-blend-mode: multiply;
+}
+.art > * { position: absolute; }
+.art .frame { inset: 0; width: 100%; height: 100%; }
+.a-kicker { left: 14%; top: 10.6%; margin: 0; color: var(--mustard); font-weight: 900; font-size: 9.4cqw; letter-spacing: .02em; line-height: 1; }
+.a-en1 { left: 14%; top: 19%; margin: 0; color: var(--gray); font-weight: 800; font-size: 6.3cqw; line-height: 1; letter-spacing: .01em; }
+.a-en2 { left: 14%; top: 24.8%; margin: 0; color: var(--ink); font-weight: 800; font-size: 6.3cqw; line-height: 1; letter-spacing: .01em; }
+.a-banner { left: 13%; right: 13%; top: 32.5%; height: 16%; background: var(--ink); display: flex; align-items: center; justify-content: center; gap: 3cqw; }
+.a-banner b { color: var(--paper); font-weight: 900; font-size: 25cqw; line-height: 1; letter-spacing: .14em; margin-right: -.14em; transform: translateY(-.04em); }
+.a-sprout { right: 13.5%; top: 11%; width: 10.5%; }
+.a-tag { left: 13%; top: 54%; width: 10.5%; height: 38%; background: var(--umber); color: var(--mustard); writing-mode: vertical-rl; font-family: var(--f-cn); font-weight: 900; font-size: 7.6cqw; display: flex; align-items: center; justify-content: center; letter-spacing: .08em; }
+.a-burst { left: 52%; top: 50.5%; width: 10%; }
+.a-cup { left: 25%; top: 50%; width: 32%; }
+.a-match { right: 12%; top: 51%; width: 25%; }
+.a-car { right: 11.5%; top: 68%; width: 29%; }
+.a-fine { right: 13%; bottom: 8.4%; margin: 0; text-align: right; font-family: var(--f-cn); font-weight: 700; font-size: 3.3cqw; line-height: 1.7; color: var(--ink); }
+.a-fine span { display: block; }
+.a-crease { top: 0; bottom: 0; width: 1.4cqw; transform: translateX(-50%); pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(107,92,72,.12) 40%, rgba(255,255,255,.3) 55%, transparent); }
+
+/* proof sheet notes */
+.proof-notes { display: grid; gap: 22px; align-content: start; min-width: 0; }
+.proof-head { font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; color: var(--umber); margin: 0; display: flex; gap: 14px; flex-wrap: wrap; }
+.lede { margin: 0; font-size: clamp(24px, 3.2vw, 34px); font-weight: 900; line-height: 1.35; text-wrap: balance; }
+.lede em { font-style: normal; background: linear-gradient(transparent 62%, var(--mustard) 62% 90%, transparent 90%); }
+.spec { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; font-size: 14px; max-width: 420px; }
+.spec dt { color: var(--umber); }
+.spec dd { margin: 0; font-weight: 500; }
+.spec dd.mono { font-family: var(--f-mono); font-size: 13px; }
+.swatches { display: flex; gap: 0; flex-wrap: wrap; max-width: 440px; }
+.sw { flex: 1 1 70px; border: 2px solid var(--ink); margin-left: -2px; background: var(--paper); }
+.sw:first-child { margin-left: 0; }
+.sw i { display: block; height: 30px; border-bottom: 2px solid var(--ink); }
+.sw span { display: block; padding: 4px 6px 5px; font-size: 12px; font-weight: 700; line-height: 1.3; }
+.sw small { display: block; font-family: var(--f-mono); font-weight: 500; font-size: 10px; color: var(--umber); }
+.hand { font-family: var(--f-hand); font-size: 26px; color: var(--umber); margin: 0; line-height: 1.2; }
+
+/* ---------- section banners ---------- */
+.sec { padding-block: 40px 24px; }
+.banner { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 36px; }
+.banner h2 { margin: 0; background: var(--ink); color: var(--paper); font-weight: 900; font-size: 28px; line-height: 1; padding: 10px 22px 12px; letter-spacing: .12em; }
+.banner .en { font-family: var(--f-round); font-weight: 800; color: var(--gray); letter-spacing: .14em; font-size: 14px; }
+.banner .rule { flex: 1 1 60px; height: 0; border-top: 3px solid var(--ink); position: relative; min-width: 40px; }
+.banner .rule::after { content: ""; position: absolute; right: -4px; top: -9px; width: 14px; height: 14px; background: var(--ink); clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%); }
+.banner p { flex-basis: 100%; margin: 4px 0 0; color: var(--umber); font-size: 14px; }
+
+/* ---------- shelf ---------- */
+.shelf { display: flex; flex-wrap: wrap; overflow-x: clip; }
+.slot { flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; align-items: stretch; }
+.goods { height: 330px; display: flex; align-items: flex-end; justify-content: center; position: relative; padding-inline: 12px; }
+.plank {
+  height: 22px; background: var(--umber); border-top: 4px solid var(--ink); border-bottom: 3px solid var(--ink);
+  background-image: repeating-linear-gradient(90deg, rgba(0,0,0,.08) 0 1px, transparent 1px 37px), linear-gradient(rgba(255,255,255,.12), transparent);
+}
+.tags { display: flex; justify-content: center; }
+.tag {
+  position: relative; margin-top: 0; padding: 22px 0 0; border: 0; background: none; cursor: pointer; font: inherit; color: inherit;
+}
+.tag::before { content: ""; position: absolute; top: 0; left: 50%; height: 24px; border-left: 2px solid var(--ink); }
+.tag-card {
+  display: grid; gap: 1px; text-align: left; min-width: 172px; padding: 8px 14px 9px 26px; position: relative;
+  background: var(--paper); border: 2px solid var(--ink); border-radius: 3px 10px 10px 3px; transform: rotate(-2deg); transition: background .2s, color .2s;
+}
+.slot:nth-child(2) .tag-card { transform: rotate(1.5deg); }
+.slot:nth-child(3) .tag-card { transform: rotate(-1deg); }
+.tag-card::before { content: ""; position: absolute; left: 9px; top: 50%; width: 8px; height: 8px; margin-top: -4px; border-radius: 50%; border: 2px solid var(--ink); background: var(--table); }
+.tag-code { font-family: var(--f-mono); font-size: 11px; color: var(--umber); }
+.tag-name { font-weight: 900; font-size: 15px; line-height: 1.3; }
+.tag-kind { font-size: 12px; color: var(--umber); }
+.slot.on .tag-card { background: var(--ink); color: var(--paper); }
+.slot.on .tag-code, .slot.on .tag-kind { color: var(--mustard); }
+
+.item { border: 0; padding: 0; background: none; cursor: pointer; position: relative; font: inherit; color: inherit; display: block; transition: transform .35s cubic-bezier(.3,1.6,.5,1); }
+.item:hover, .slot.on .item { transform: translateY(-6px) rotate(-1deg); }
+
+/* seed packet */
+.seed { width: 196px; height: 268px; filter: drop-shadow(4px 5px 0 rgba(28,37,55,.18)); }
+.packet {
+  position: absolute; inset: 0; background: var(--kraft);
+  clip-path: polygon(0 10px,5% 0,10% 10px,15% 0,20% 10px,25% 0,30% 10px,35% 0,40% 10px,45% 0,50% 10px,55% 0,60% 10px,65% 0,70% 10px,75% 0,80% 10px,85% 0,90% 10px,95% 0,100% 10px,100% 100%,0 100%);
+  padding: 22px 12px 12px;
+}
+.pk-in { height: 100%; border: 3px solid var(--ink); outline: 1.5px solid var(--ink); outline-offset: -8px; padding: 12px 14px; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left; }
+.pk-kicker { margin: 0; font-family: var(--f-mono); font-size: 10px; color: var(--umber); letter-spacing: .08em; }
+.pk-title { margin: 0; font-weight: 900; font-size: 26px; line-height: 1.15; }
+.pk-en { margin: 0; font-family: var(--f-round); font-weight: 800; font-size: 11px; color: var(--umber); letter-spacing: .1em; }
+.pk-win { margin-top: 8px; width: 100%; height: 92px; background: var(--paper); border: 2px solid var(--ink); border-radius: 46px 46px 6px 6px; position: relative; overflow: hidden; }
+.pk-win svg { position: absolute; left: 50%; bottom: 8px; width: 112px; transform: translateX(-50%); }
+.pk-win::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 12px; background: var(--leaf); border-top: 2px solid var(--ink); }
+.pk-small { margin: 6px 0 0; font-size: 11px; font-weight: 700; }
+.pk-jp { margin: 0; font-family: var(--f-round); font-size: 10px; color: var(--umber); }
+.sprout { position: absolute; left: 50%; bottom: calc(100% - 8px); width: 54px; margin-left: -27px; transform: scaleY(0); transform-origin: 50% 100%; transition: transform .5s cubic-bezier(.3,1.7,.5,1); }
+.seed:hover .sprout, .slot.on .sprout { transform: scaleY(1); }
+
+/* matchbox */
+.match { width: 232px; height: 142px; margin-bottom: 4px; }
+.mbox { position: absolute; inset: 0; }
+.critter {
+  position: absolute; left: 150px; top: 34px; width: 58px; height: 64px; z-index: 0;
+  background: var(--white); border: 3px solid var(--ink); border-radius: 50% 50% 42% 42%;
+  transition: transform .45s cubic-bezier(.3,1.5,.5,1) .05s; display: flex; justify-content: center; gap: 6px; padding-top: 14px;
+}
+.critter::before, .critter::after { content: ""; position: absolute; top: -9px; width: 12px; height: 16px; background: var(--white); border: 3px solid var(--ink); border-bottom: 0; border-radius: 50% 50% 0 0; }
+.critter::before { left: 8px; transform: rotate(-18deg); }
+.critter::after { right: 8px; transform: rotate(18deg); }
+.eye { width: 16px; height: 18px; border-radius: 50%; background: var(--paper); border: 2px solid var(--ink); position: relative; }
+.eye i { position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 50%; background: var(--ink); }
+.drawer {
+  position: absolute; left: 0; right: 0; top: 30px; bottom: 6px; z-index: 1; background: var(--paper); border: 3px solid var(--ink);
+  transition: transform .45s cubic-bezier(.3,1.3,.5,1);
+  background-image: repeating-linear-gradient(90deg, transparent 0 14px, rgba(107,92,72,.18) 14px 15px);
+}
+.sleeve { position: absolute; left: 0; right: 0; top: 24px; bottom: 0; z-index: 2; background: var(--ink); border: 3px solid var(--ink); border-radius: 3px; display: grid; place-items: center; }
+.sleeve::before, .sleeve::after { content: ""; position: absolute; left: 0; right: 0; height: 7px; background: var(--umber); background-image: radial-gradient(rgba(0,0,0,.35) 1px, transparent 1.4px); background-size: 3px 3px; }
+.sleeve::before { top: 0; } .sleeve::after { bottom: 0; }
+.sl-label { width: 74%; padding: 6px 10px 7px; background: var(--paper); border: 2px solid var(--paper); outline: 2px solid var(--ink); outline-offset: -5px; text-align: center; display: grid; gap: 0; }
+.sl-label b { font-size: 24px; line-height: 1.15; font-weight: 900; letter-spacing: .1em; }
+.sl-label span { font-family: var(--f-round); font-weight: 800; font-size: 11px; letter-spacing: .26em; color: var(--bean); }
+.sl-label em { font-style: normal; font-size: 10px; color: var(--umber); }
+.match:hover .drawer, .slot.on .drawer { transform: translateX(44%); }
+.match:hover .critter, .slot.on .critter { transform: translate(102px, -32px); }
+
+/* model kit box */
+.kit { width: 246px; flex: none; height: 196px; margin-bottom: 2px; }
+.kit-lid {
+  position: absolute; inset: 0 0 30px 0; background: var(--paper); border: 3px solid var(--ink); overflow: hidden; text-align: left;
+  box-shadow: 4px 5px 0 rgba(28,37,55,.18);
+}
+.kit-stripe { position: absolute; left: 0; right: 0; top: 0; height: 18px; background: repeating-linear-gradient(-45deg, var(--ink) 0 9px, var(--mustard) 9px 18px); border-bottom: 3px solid var(--ink); }
+.kit-title { position: absolute; left: 12px; top: 26px; margin: 0; font-size: 25px; font-weight: 900; line-height: 1.1; }
+.kit-en { position: absolute; left: 13px; top: 57px; margin: 0; font-family: var(--f-round); font-weight: 800; font-size: 10px; letter-spacing: .14em; color: var(--umber); }
+.kit-car { position: absolute; right: 10px; bottom: 6px; width: 150px; transition: transform .2s; }
+.kit-lines { position: absolute; left: 16px; bottom: 26px; width: 64px; }
+.kit-badge { position: absolute; right: 10px; top: 26px; width: 44px; height: 44px; border-radius: 50%; background: var(--bean); color: var(--paper); display: grid; place-items: center; font-family: var(--f-round); font-weight: 900; font-size: 12px; border: 2px solid var(--ink); transform: rotate(10deg); }
+.kit-side { position: absolute; left: 0; right: 0; bottom: 0; height: 33px; background: var(--mustard); border: 3px solid var(--ink); display: flex; align-items: center; justify-content: space-between; padding: 0 10px; font-size: 11px; font-weight: 700; }
+.kit-side span:last-child { font-family: var(--f-mono); font-weight: 500; }
+@keyframes rev { 0%,100% { transform: translate(0,0); } 25% { transform: translate(-1px,-1px) rotate(-.6deg); } 75% { transform: translate(1px,0) rotate(.6deg); } }
+.kit:hover .kit-car, .slot.on .kit-car { animation: rev .12s linear infinite; }
+.racer-wrap { position: relative; width: 68px; flex: none; margin-left: 6px; }
+.racer { position: relative; display: block; width: 68px; border: 0; padding: 0; background: none; cursor: grab; z-index: 3; touch-action: none; }
+.racer svg { display: block; width: 100%; transform: scaleX(-1); }
+.racer:active { cursor: grabbing; }
+.racer-hint { position: absolute; left: 0; bottom: 40px; font-family: var(--f-hand); font-size: 18px; color: var(--umber); white-space: nowrap; pointer-events: none; line-height: 1; }
+
+/* ---------- ingredients label ---------- */
+.label-grid { display: grid; grid-template-columns: minmax(0, 400px) minmax(0, 1fr); gap: 48px; align-items: start; }
+.nutri { background: var(--paper); border: 3px solid var(--ink); padding: 16px 18px 14px; box-shadow: 6px 7px 0 rgba(28,37,55,.16); }
+.nutri h3 { margin: 0; font-size: 26px; font-weight: 900; line-height: 1.2; text-wrap: balance; }
+.nutri .sub { margin: 2px 0 10px; font-family: var(--f-round); font-weight: 800; font-size: 12px; letter-spacing: .12em; color: var(--umber); }
+.nutri table { width: 100%; border-collapse: collapse; border-top: 9px solid var(--ink); border-bottom: 5px solid var(--ink); font-size: 14px; }
+.nutri th, .nutri td { text-align: left; vertical-align: top; padding: 7px 0; border-bottom: 1.5px solid var(--ink); }
+.nutri tr:last-child th, .nutri tr:last-child td { border-bottom: 0; }
+.nutri th { font-weight: 700; width: 5.5em; white-space: nowrap; padding-right: 10px; }
+.nutri td { font-weight: 400; }
+.nutri .foot { margin: 8px 0 0; font-size: 11px; color: var(--umber); display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.nutri .foot span:last-child { font-family: var(--f-mono); }
+.howto { display: grid; gap: 20px; min-width: 0; }
+.howto h3 { margin: 0; font-size: 20px; font-weight: 900; display: flex; align-items: baseline; gap: 10px; }
+.howto h3 small { font-family: var(--f-round); font-size: 11px; color: var(--gray); letter-spacing: .14em; }
+.howto ol { margin: 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 10px; max-width: 520px; }
+.howto li { counter-increment: s; display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: start; }
+.howto li::before { content: counter(s); width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--ink); display: grid; place-items: center; font-family: var(--f-round); font-weight: 900; font-size: 14px; background: var(--paper); }
+.howto li span { padding-top: 2px; }
+.howto kbd { font-family: var(--f-mono); font-size: 12px; border: 1.5px solid var(--ink); border-bottom-width: 3px; border-radius: 4px; padding: 0 5px; background: var(--paper); }
+.tear {
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px; max-width: 520px; text-decoration: none;
+  background: var(--bean); color: var(--paper); padding: 16px 20px; position: relative; border: 3px solid var(--ink);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 70%, 8px 62%, 0 54%, 8px 46%, 0 38%, 8px 30%);
+  transition: transform .2s;
+}
+.tear::before { content: ""; position: absolute; left: 20px; right: 20px; top: 7px; border-top: 2px dashed rgba(242,234,213,.7); }
+.tear b { font-size: 20px; font-weight: 900; letter-spacing: .3em; }
+.tear small { display: block; font-size: 12px; font-weight: 500; letter-spacing: 0; opacity: .85; }
+.tear .url { font-family: var(--f-mono); font-size: 13px; }
+.tear:hover { transform: translateX(4px) rotate(-.5deg); }
+.flavor { font-family: var(--f-hand); font-size: 28px; color: var(--umber); margin: 0; }
+
+/* ---------- maker panel ---------- */
+.maker { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: end; border: 3px solid var(--ink); outline: 1.5px solid var(--ink); outline-offset: 5px; padding: 22px 26px; background: var(--paper); margin-top: 24px; }
+.maker dl { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px 28px; }
+.maker dl div { display: grid; grid-template-columns: 4.5em 1fr; gap: 8px; font-size: 14px; border-bottom: 1.5px dashed rgba(28,37,55,.35); padding-bottom: 6px; }
+.maker dt { color: var(--umber); }
+.maker dd { margin: 0; font-weight: 500; min-width: 0; }
+.maker dd.mono { font-family: var(--f-mono); font-size: 13px; }
+.maker dd.pending { color: var(--gray); }
+.barcode { display: grid; gap: 4px; justify-items: center; }
+.bars { display: flex; align-items: stretch; height: 58px; background: var(--paper); }
+.bars i { display: block; background: var(--ink); }
+.barcode span { font-family: var(--f-mono); font-size: 12px; letter-spacing: .2em; }
+.end { text-align: center; margin: 28px 0 0; font-size: 12px; color: var(--umber); }
+
+/* ---------- responsive ---------- */
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 28px; justify-items: center; }
+  .proof-frame { width: min(100%, 460px); padding: 18px; }
+  .proof-notes { width: 100%; max-width: 460px; }
+  .label-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .maker { grid-template-columns: minmax(0, 1fr); justify-items: start; }
+}
+@media (max-width: 420px) {
+  .top nav { gap: 14px; }
+  .top nav small { display: none; }
+  .goods { height: 300px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; }
+}
+</style>
+
+<!-- drawings shared by the cover strips and the shelf -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="2.2"/>
+    </filter>
+    <clipPath id="cupclip"><rect x="-20" y="-80" width="200" height="117"/></clipPath>
+
+    <symbol id="mudkip" viewBox="0 0 200 140">
+      <g class="s-ink" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round">
+        <path class="f-water2" d="M146 98 C158 72 172 56 196 50 C194 74 186 98 164 112 Z"/>
+        <path class="f-none" stroke-width="2.4" d="M156 98 C166 82 176 70 188 62"/>
+        <path class="f-water2" d="M74 44 C66 22 80 6 102 4 C96 18 100 32 110 48 Z"/>
+        <path class="f-none" stroke-width="2.4" d="M84 40 C82 26 88 16 98 11"/>
+        <rect class="f-water" x="58" y="110" width="20" height="20" rx="9"/>
+        <rect class="f-water" x="94" y="112" width="20" height="18" rx="9"/>
+        <rect class="f-water" x="126" y="108" width="20" height="18" rx="9"/>
+        <path class="f-water" d="M30 90 C26 62 50 40 84 40 C112 40 128 56 132 74 C148 76 162 88 160 102 C158 116 140 124 118 122 C100 126 70 128 54 120 C38 114 31 104 30 90 Z"/>
+        <path class="f-none" stroke-width="2.2" d="M50 112 C68 120 96 121 114 116"/>
+        <path class="f-gill" stroke-width="2.8" d="M82 90 L66 80 L71 92 L55 95 L71 101 L63 113 L82 101 Z"/>
+        <circle class="f-ink" stroke="none" cx="54" cy="71" r="5.6"/>
+        <circle class="f-white" stroke="none" cx="55.9" cy="69" r="1.9"/>
+        <path class="f-none" d="M33 94 Q44 103 56 98"/>
+      </g>
+    </symbol>
+
+    <symbol id="cup" viewBox="0 -60 160 235">
+      <g class="s-ink" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round">
+        <ellipse class="f-paper" cx="80" cy="34" rx="66" ry="16"/>
+        <ellipse class="f-water" stroke-width="2.4" cx="80" cy="36" rx="57" ry="11"/>
+        <g clip-path="url(#cupclip)"><use href="#mudkip" x="4" y="-54" width="152" height="106"/></g>
+        <path class="f-none" stroke-width="2.4" d="M22 34 q6 -4 12 0 M128 33 q6 -4 12 0"/>
+        <path class="f-paper" d="M14 34 A66 16 0 0 0 146 34 L130 160 Q80 172 30 160 Z"/>
+        <path class="f-must" stroke-width="2.4" d="M20 76 Q80 92 140 76 L138 92 Q80 108 22 92 Z"/>
+        <rect class="f-paper" stroke-width="2.4" x="40" y="102" width="24" height="56" rx="2"/>
+        <text x="52" y="108" class="f-bean" stroke="none" style="writing-mode:vertical-rl;font:900 15px var(--f-cn);letter-spacing:1px">今日份</text>
+        <circle class="f-water2" cx="102" cy="128" r="22"/>
+        <circle class="f-none" stroke-width="2.4" cx="95" cy="122" r="5"/>
+        <circle class="f-none" stroke-width="2.4" cx="108" cy="133" r="7"/>
+        <circle class="f-none" stroke-width="2.4" cx="110" cy="117" r="3"/>
+      </g>
+    </symbol>
+
+    <symbol id="car" viewBox="0 0 160 84">
+      <g class="s-ink" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round">
+        <path class="f-must" d="M14 36 L8 22 L30 22 L28 36 Z"/>
+        <path class="f-paper" d="M10 54 L18 36 L60 31 L76 18 L114 18 L126 31 L148 35 L154 54 Z"/>
+        <path class="f-water2" stroke-width="2.6" d="M68 31 L80 23 L110 23 L118 31 Z"/>
+        <path class="f-bean" stroke-width="2.4" d="M18 43 L150 43 L152 48 L14 48 Z"/>
+        <circle class="f-paper" stroke-width="2.4" cx="92" cy="38" r="8"/>
+        <text x="92" y="42.5" text-anchor="middle" class="f-ink" stroke="none" style="font:900 12px var(--f-round)">2</text>
+        <circle class="f-ink" cx="40" cy="58" r="15"/><circle class="f-paper" stroke-width="2" cx="40" cy="58" r="6"/>
+        <circle class="f-ink" cx="124" cy="58" r="15"/><circle class="f-paper" stroke-width="2" cx="124" cy="58" r="6"/>
+      </g>
+    </symbol>
+
+    <symbol id="matchpeek" viewBox="0 0 130 100">
+      <g class="s-ink" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round">
+        <path class="f-must" d="M8 46 L30 30 L110 30 L88 46 Z"/>
+        <path class="f-white" d="M48 39 C46 16 80 14 80 37 Z"/>
+        <circle class="f-ink" stroke="none" cx="58" cy="29" r="3"/><circle class="f-ink" stroke="none" cx="70" cy="29" r="3"/>
+        <path class="f-ink" stroke-width="2" d="M40 40 L48 34 L92 34 L84 40 Z"/>
+        <path class="f-paper" d="M8 46 H88 V88 H8 Z"/>
+        <path class="f-ink" stroke="none" d="M8 56 H88 V62 H8 Z"/>
+        <circle class="f-paper" stroke-width="2.4" cx="48" cy="74" r="8"/>
+        <path class="f-umber" d="M88 46 L110 30 V72 L88 88 Z"/>
+      </g>
+    </symbol>
+
+    <symbol id="sprout" viewBox="0 0 60 84">
+      <g class="s-ink" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <path class="f-none" d="M30 50 C30 38 31 30 30 20"/>
+        <path class="f-leaf" d="M30 30 C20 30 10 22 10 12 C22 12 30 18 30 30 Z"/>
+        <path class="f-leaf" d="M30 24 C40 24 50 16 52 6 C40 6 31 12 30 24 Z"/>
+        <path class="f-umber" d="M14 54 H46 L41 80 H19 Z"/>
+        <path class="f-must" d="M9 46 H51 V56 H9 Z"/>
+      </g>
+    </symbol>
+
+    <symbol id="sprout-only" viewBox="0 0 60 60">
+      <g class="s-ink" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <path class="f-none" d="M30 60 C30 46 31 36 30 24"/>
+        <path class="f-leaf" d="M30 36 C20 36 10 28 10 18 C22 18 30 24 30 36 Z"/>
+        <path class="f-leaf" d="M30 30 C40 30 50 22 52 12 C40 12 31 18 30 30 Z"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <header class="top">
+    <span class="logo" aria-hidden="true">DK</span>
+    <nav aria-label="页面">
+      <a href="#shelf">货架<small>SHELF</small></a>
+      <a href="#label">成分表<small>LABEL</small></a>
+      <a href="#maker">制造商<small>MAKER</small></a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="sr">DK</h1>
+
+    <section class="hero" aria-label="封面">
+      <div class="proof-frame">
+        <span class="crop tl"></span><span class="crop tr"></span><span class="crop bl"></span><span class="crop br"></span>
+        <svg class="reg" viewBox="0 0 20 20" aria-hidden="true"><g class="s-ink f-none" stroke-width="1"><circle cx="10" cy="10" r="5.5"/><path d="M10 0 V20 M0 10 H20"/></g></svg>
+
+        <div class="stage" id="stage">
+          <div class="inside" id="inside" inert>
+            <h2><small>CONTENTS</small>内含物</h2>
+            <ul>
+              <li><a href="#shelf" data-pick="zuzu"><svg viewBox="0 0 200 140" aria-hidden="true"><use href="#mudkip"/></svg><span><b>ZUZU · 庭院日和</b><span>种子包 × 1</span></span></a></li>
+              <li><a href="#shelf" data-pick="x"><svg viewBox="0 0 130 100" aria-hidden="true"><use href="#matchpeek"/></svg><span><b>冒冒 Peekala</b><span>火柴盒 × 1</span></span></a></li>
+              <li><a href="#shelf" data-pick="2w"><svg viewBox="0 0 160 84" aria-hidden="true"><use href="#car"/></svg><span><b>二呜兄弟 · 赛道竞速</b><span>拼装盒 × 1</span></span></a></li>
+            </ul>
+            <p class="note">点左边的折页，<br>可以再合上。</p>
+            <div class="stamp" aria-hidden="true"><span>已开封<small>OPENED</small></span></div>
+          </div>
+
+          <div class="cover" id="cover">
+            <div class="art" id="cover-art" aria-hidden="true">
+              <svg class="frame" viewBox="0 0 300 400" preserveAspectRatio="none">
+                <g class="rough s-ink f-none" stroke-linecap="round">
+                  <path stroke-width="5.5" d="M7 23 H293 M17 13 V393 M283 13 V393 M7 383 H293"/>
+                  <rect stroke-width="3" x="29" y="36" width="242" height="334"/>
+                </g>
+                <path class="f-ink" transform="translate(289 389)" d="M0 -13 Q1.6 -1.6 11 0 Q1.6 1.6 0 13 Q-1.6 1.6 -11 0 Q-1.6 -1.6 0 -13Z"/>
+                <path class="f-ink" transform="translate(296 376) scale(.45)" d="M0 -13 Q1.6 -1.6 11 0 Q1.6 1.6 0 13 Q-1.6 1.6 -11 0 Q-1.6 -1.6 0 -13Z"/>
+              </svg>
+              <p class="a-kicker">新作オススメ</p>
+              <p class="a-en1">HANDMADE TASTE</p>
+              <p class="a-en2">LITTLE WEB GOODS</p>
+              <svg class="a-sprout rough" viewBox="0 0 60 84"><use href="#sprout"/></svg>
+              <div class="a-banner"><b>DK</b></div>
+              <div class="a-tag">新作上架中</div>
+              <svg class="a-burst" viewBox="0 0 60 50"><g class="f-ink"><path d="M6 30 L14 8 L22 10 L12 33 Z"/><path d="M26 34 L40 12 L47 16 L31 38 Z"/><path d="M33 44 L54 36 L56 43 L35 50 Z"/></g></svg>
+              <svg class="a-cup rough" viewBox="0 -60 160 235"><use href="#cup"/></svg>
+              <svg class="a-match rough" viewBox="0 0 130 100"><use href="#matchpeek"/></svg>
+              <svg class="a-car rough" viewBox="0 0 160 84"><use href="#car"/></svg>
+              <p class="a-fine"><span>图案仅供参考，</span><span>实际内容请以开封后为准。</span></p>
+              <span class="a-crease" style="left:25%"></span>
+              <span class="a-crease" style="left:50%"></span>
+              <span class="a-crease" style="left:75%"></span>
+            </div>
+          </div>
+          <button class="pull" id="pull" type="button" aria-controls="inside" aria-expanded="false">掀开</button>
+        </div>
+      </div>
+
+      <div class="proof-notes">
+        <p class="proof-head"><span>校样 PROOF</span><span>第 1 版</span><span>2026.11</span></p>
+        <p class="lede">一些顺手做的<em>网页小玩意</em>，<br>每一样都能玩。</p>
+        <dl class="spec">
+          <dt>规格</dt><dd>四折封面 · 沿折痕掀开</dd>
+          <dt>内含物</dt><dd>3 件，详见货架</dd>
+          <dt>批次</dt><dd class="mono">LOT.DK-261115</dd>
+        </dl>
+        <div class="swatches" aria-label="印刷用色">
+          <div class="sw"><i style="background:var(--ink)"></i><span>墨蓝<small>INK</small></span></div>
+          <div class="sw"><i style="background:var(--mustard)"></i><span>芥末<small>MUSTARD</small></span></div>
+          <div class="sw"><i style="background:var(--gray)"></i><span>暖灰<small>GRAY</small></span></div>
+          <div class="sw"><i style="background:var(--umber)"></i><span>茶褐<small>UMBER</small></span></div>
+          <div class="sw"><i style="background:var(--paper)"></i><span>米白<small>PAPER</small></span></div>
+        </div>
+        <p class="hand">↙ 点封面，沿折痕掀开</p>
+      </div>
+    </section>
+
+    <section class="sec" id="shelf" aria-labelledby="shelf-h">
+      <div class="banner">
+        <h2 id="shelf-h">货架</h2><span class="en">SHELF · 3 ITEMS</span><span class="rule"></span>
+        <p>点一件商品，看它的成分表。每件包装都能动一下。</p>
+      </div>
+
+      <div class="shelf" id="shelf-row">
+        <div class="slot on" data-key="zuzu">
+          <div class="goods">
+            <button class="item seed" type="button" data-key="zuzu" aria-pressed="true" aria-label="ZUZU · 庭院日和，查看成分表">
+              <svg class="sprout rough" viewBox="0 0 60 60" aria-hidden="true"><use href="#sprout-only"/></svg>
+              <div class="packet" aria-hidden="true">
+                <div class="pk-in">
+                  <p class="pk-kicker">SEEDS · DK-ZZ</p>
+                  <p class="pk-title">庭院日和</p>
+                  <p class="pk-en">ZUZU GARDEN DAYS</p>
+                  <div class="pk-win"><svg class="rough" viewBox="0 0 200 140"><use href="#mudkip"/></svg></div>
+                  <p class="pk-small">内含 · 动作 12 种 · 靶子 3 种</p>
+                  <p class="pk-jp">きょうも、いっしょに。</p>
+                </div>
+              </div>
+            </button>
+          </div>
+          <div class="plank"></div>
+          <div class="tags"><button class="tag" type="button" data-key="zuzu" tabindex="-1" aria-hidden="true"><span class="tag-card"><span class="tag-code">货号 DK-ZZ</span><span class="tag-name">ZUZU · 庭院日和</span><span class="tag-kind">3D 庭院 · 小游戏</span></span></button></div>
+        </div>
+
+        <div class="slot" data-key="x">
+          <div class="goods">
+            <button class="item match" type="button" data-key="x" aria-pressed="false" aria-label="冒冒 Peekala，查看成分表">
+              <div class="mbox" aria-hidden="true">
+                <div class="critter"><span class="eye"><i></i></span><span class="eye"><i></i></span></div>
+                <div class="drawer"></div>
+                <div class="sleeve"><div class="sl-label"><b>冒冒</b><span>PEEKALA</span><em>𝕏 侧栏小伙伴 · v3.71</em></div></div>
+              </div>
+            </button>
+          </div>
+          <div class="plank"></div>
+          <div class="tags"><button class="tag" type="button" data-key="x" tabindex="-1" aria-hidden="true"><span class="tag-card"><span class="tag-code">货号 DK-X</span><span class="tag-name">冒冒 Peekala</span><span class="tag-kind">书签小工具 · 开源</span></span></button></div>
+        </div>
+
+        <div class="slot" data-key="2w">
+          <div class="goods">
+            <button class="item kit" type="button" data-key="2w" aria-pressed="false" aria-label="二呜兄弟 · 赛道竞速，查看成分表">
+              <div class="kit-lid" aria-hidden="true">
+                <div class="kit-stripe"></div>
+                <p class="kit-title">二呜兄弟</p>
+                <p class="kit-en">RACING KIT · 赛道竞速</p>
+                <svg class="kit-lines" viewBox="0 0 64 30"><g class="s-ink" stroke-width="3" stroke-linecap="round"><path d="M4 6 H50 M14 16 H60 M2 26 H40"/></g></svg>
+                <svg class="kit-car rough" viewBox="0 0 160 84"><use href="#car"/></svg>
+                <span class="kit-badge">4WD</span>
+              </div>
+              <div class="kit-side" aria-hidden="true"><span>附技能卡 · 任选 3 张</span><span>3 LAPS</span></div>
+            </button>
+            <div class="racer-wrap"><button class="racer" id="racer" type="button" aria-label="回力车：往右拉再松手，或按回车发车"><svg class="rough" viewBox="0 0 160 84" aria-hidden="true"><use href="#car"/></svg></button>
+            <span class="racer-hint" aria-hidden="true">往右拉，<br>松手 →</span></div>
+          </div>
+          <div class="plank"></div>
+          <div class="tags"><button class="tag" type="button" data-key="2w" tabindex="-1" aria-hidden="true"><span class="tag-card"><span class="tag-code">货号 DK-2W</span><span class="tag-name">二呜兄弟 · 赛道竞速</span><span class="tag-kind">四驱竞速 · 小游戏</span></span></button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="label" aria-labelledby="label-h">
+      <div class="banner">
+        <h2 id="label-h">成分表</h2><span class="en">INGREDIENTS</span><span class="rule"></span>
+      </div>
+      <div class="label-grid">
+        <article class="nutri" aria-live="polite">
+          <h3 id="n-name">ZUZU · 庭院日和</h3>
+          <p class="sub" id="n-sub">GARDEN DAYS</p>
+          <table>
+            <tbody id="n-rows">
+              <tr><th>口味</th><td>3D 庭院 · 陪伴小游戏</td></tr>
+              <tr><th>主要成分</th><td>ZUZU（水跃鱼）× 1、草地若干</td></tr>
+              <tr><th>配料</th><td>动作 12 种（散步、拍头、跳舞、灌篮、RAP…）、靶子 3 种（普通 / 滑动 / 重型）</td></tr>
+              <tr><th>净含量</th><td>庭院 1 片</td></tr>
+              <tr><th>保质期</th><td>长期有效</td></tr>
+            </tbody>
+          </table>
+          <p class="foot"><span>开封后请尽快游玩</span><span id="n-code">DK-ZZ</span></p>
+        </article>
+        <div class="howto">
+          <h3>食用方法<small>HOW TO</small></h3>
+          <ol id="n-steps">
+            <li><span>拖拽旋转庭院，滚轮缩放</span></li>
+            <li><span>在动作面板里点一个动作，看 ZUZU 表演</span></li>
+            <li><span>去打靶，攒「命中 +1」</span></li>
+          </ol>
+          <a class="tear" id="n-link" href="https://zuzu.usdts.de" target="_blank" rel="noopener">
+            <span><b>开 封</b><small>沿虚线撕开，去玩</small></span>
+            <span class="url" id="n-url">zuzu.usdts.de ↗</span>
+          </a>
+          <p class="flavor" id="n-flavor">きょうも、いっしょに。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="maker" aria-labelledby="maker-h">
+      <div class="banner">
+        <h2 id="maker-h">制造商信息</h2><span class="en">MAKER</span><span class="rule"></span>
+      </div>
+      <div class="maker">
+        <dl>
+          <div><dt>品牌</dt><dd>DK</dd></div>
+          <div><dt>产地</dt><dd class="mono">usdts.de</dd></div>
+          <div><dt>客服</dt><dd class="pending">暂未开通</dd></div>
+          <div><dt>批次</dt><dd class="mono">LOT.DK-261115</dd></div>
+          <div><dt>保存方法</dt><dd>置于阴凉的浏览器中</dd></div>
+          <div><dt>在售</dt><dd>3 件，持续上新</dd></div>
+        </dl>
+        <div class="barcode" aria-hidden="true"><div class="bars" id="bars"></div><span>6 926115 000003</span></div>
+      </div>
+      <p class="end">图案仅供参考 · DK</p>
+    </section>
+  </main>
+</div>
+
+<script>
+(() => {
+  /* ---- folding cover: split the artwork into four hinged strips ---- */
+  const stage = document.getElementById('stage');
+  const cover = document.getElementById('cover');
+  const art = document.getElementById('cover-art');
+  const inside = document.getElementById('inside');
+  const pull = document.getElementById('pull');
+
+  let prev = null, first = null;
+  for (let i = 0; i < 4; i++) {
+    const seg = document.createElement('div');
+    seg.className = 'seg s' + i;
+    const front = document.createElement('div');
+    front.className = 'face front';
+    const clone = art.cloneNode(true);
+    clone.removeAttribute('id');
+    clone.style.left = (-100 * i) + '%';
+    front.appendChild(clone);
+    const back = document.createElement('div');
+    back.className = 'face back';
+    back.innerHTML = '<span>DK</span>';
+    seg.append(front, back);
+    if (prev) prev.appendChild(seg); else first = seg;
+    prev = seg;
+  }
+  cover.replaceChildren(first);
+
+  const setOpen = (open) => {
+    stage.classList.toggle('open', open);
+    inside.inert = !open;
+    pull.textContent = open ? '合上' : '掀开';
+    pull.setAttribute('aria-expanded', String(open));
+  };
+  cover.addEventListener('click', () => setOpen(!stage.classList.contains('open')));
+  pull.addEventListener('click', () => setOpen(!stage.classList.contains('open')));
+
+  /* ---- shelf selection + ingredients label ---- */
+  const DATA = {
+    zuzu: {
+      name: 'ZUZU · 庭院日和', sub: 'GARDEN DAYS', code: 'DK-ZZ', url: 'https://zuzu.usdts.de', host: 'zuzu.usdts.de',
+      rows: [['口味', '3D 庭院 · 陪伴小游戏'], ['主要成分', 'ZUZU（水跃鱼）× 1、草地若干'],
+             ['配料', '动作 12 种（散步、拍头、跳舞、灌篮、RAP…）、靶子 3 种（普通 / 滑动 / 重型）'],
+             ['净含量', '庭院 1 片'], ['保质期', '长期有效']],
+      steps: ['拖拽旋转庭院，滚轮缩放', '在动作面板里点一个动作，看 ZUZU 表演', '去打靶，攒「命中 +1」'],
+      flavor: 'きょうも、いっしょに。'
+    },
+    x: {
+      name: '冒冒 Peekala', sub: 'YOUR LITTLE 𝕏 SIDEBAR BUDDY', code: 'DK-X', url: 'https://x.usdts.de', host: 'x.usdts.de',
+      rows: [['口味', '浏览器书签小工具'], ['主要成分', '𝕏 侧栏 × 1'],
+             ['配料', '头像速览、通知原帖直达、自定义点赞 GIF'],
+             ['规格', 'v3.71 · 开源'], ['保质期', '长期有效']],
+      steps: ['显示书签栏：<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd>', '把「冒冒」拖进书签栏', '打开 x.com，点一下冒冒'],
+      flavor: '给 𝕏 加个侧栏。'
+    },
+    '2w': {
+      name: '二呜兄弟 · 赛道竞速', sub: 'RACING KIT', code: 'DK-2W', url: 'https://2w.usdts.de', host: '2w.usdts.de',
+      rows: [['口味', '四驱车竞速 · 小游戏'], ['主要成分', '赛道「坠魔谷」× 1'],
+             ['配料', '技能池（任选 3 个，不可重复）、5 种机位'],
+             ['净含量', '每局 3 圈'], ['保质期', '长期有效']],
+      steps: ['挑 3 个技能装上车', '<kbd>Space</kbd> 起步 / 加速，<kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> 放技能', '<kbd>V</kbd> 换视角，<kbd>R</kbd> 重开'],
+      flavor: '冲线完成！'
+    }
+  };
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  function pick(key) {
+    const d = DATA[key];
+    if (!d) return;
+    document.querySelectorAll('.slot').forEach((s) => s.classList.toggle('on', s.dataset.key === key));
+    document.querySelectorAll('.item').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.key === key)));
+    $('n-name').textContent = d.name;
+    $('n-sub').textContent = d.sub;
+    $('n-code').textContent = d.code;
+    $('n-rows').innerHTML = d.rows.map(([k, v]) => `<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`).join('');
+    $('n-steps').innerHTML = d.steps.map((s) => `<li><span>${s}</span></li>`).join('');
+    $('n-link').href = d.url;
+    $('n-url').textContent = d.host + ' ↗';
+    $('n-flavor').textContent = d.flavor;
+  }
+  document.querySelectorAll('.item, .tag').forEach((b) => b.addEventListener('click', () => pick(b.dataset.key)));
+  document.querySelectorAll('[data-pick]').forEach((a) => a.addEventListener('click', () => pick(a.dataset.pick)));
+
+  /* ---- matchbox critter eyes follow the pointer ---- */
+  const pupils = [...document.querySelectorAll('.eye i')];
+  window.addEventListener('pointermove', (e) => {
+    for (const p of pupils) {
+      const r = p.parentElement.getBoundingClientRect();
+      const dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+      const a = Math.atan2(dy, dx), m = Math.min(3.5, Math.hypot(dx, dy) / 40);
+      p.style.transform = `translate(${Math.cos(a) * m}px, ${Math.sin(a) * m}px)`;
+    }
+  }, { passive: true });
+
+  /* ---- pull-back racer ---- */
+  const racer = $('racer');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let startX = null, dx = 0, busy = false;
+  const launch = (from) => {
+    busy = true;
+    const shelf = $('shelf-row').getBoundingClientRect();
+    const r = racer.getBoundingClientRect();
+    const out = -(r.right - shelf.left + 40);
+    const back = shelf.right - r.left + 40;
+    if (reduce) { racer.style.transform = ''; busy = false; return; }
+    const ease = 'cubic-bezier(.2,.75,.3,1)';
+    racer.animate([{ transform: `translateX(${from}px)` }, { transform: `translateX(${out}px)` }], { duration: 650 + Math.abs(from) * 2, easing: 'cubic-bezier(.5,0,.75,.4)' })
+      .finished.then(() => racer.animate([{ transform: `translateX(${back}px)` }, { transform: 'translateX(0)' }], { duration: 900, easing: ease }).finished)
+      .then(() => { racer.style.transform = ''; busy = false; });
+    racer.style.transform = '';
+  };
+  racer.addEventListener('pointerdown', (e) => { if (busy) return; startX = e.clientX; dx = 0; racer.setPointerCapture(e.pointerId); });
+  racer.addEventListener('pointermove', (e) => {
+    if (startX === null) return;
+    dx = Math.max(0, Math.min(90, e.clientX - startX));
+    racer.style.transform = `translateX(${dx}px)`;
+  });
+  const release = () => {
+    if (startX === null) return;
+    startX = null;
+    if (dx > 14) launch(dx); else racer.style.transform = '';
+  };
+  racer.addEventListener('pointerup', release);
+  racer.addEventListener('pointercancel', release);
+  racer.addEventListener('keydown', (e) => { if ((e.key === 'Enter' || e.key === ' ') && !busy) { e.preventDefault(); launch(60); } });
+
+  /* ---- decorative barcode ---- */
+  const bars = $('bars');
+  let seed = 261115;
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  let html = '';
+  for (let i = 0; i < 46; i++) {
+    const w = 1 + Math.floor(rnd() * 3);
+    html += `<i style="width:${w}px;margin-right:${1 + Math.floor(rnd() * 3)}px"></i>`;
+  }
+  bars.innerHTML = html;
+})();
+</script>
