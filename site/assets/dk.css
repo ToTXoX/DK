@@ -1,4 +1,6 @@
 /* Layout: one screen — a folding pad cover on the left, the picked project's info beside it. */
+/* handwritten lines: Xiaolai (SIL OFL 1.1, lxgw/kose-font), subset to the site's text by tools/subset-hand-font.sh */
+@font-face { font-family: "Xiaolai DK"; src: url("fonts/xiaolai-sub.woff2") format("woff2"); font-display: swap; }
 :root {
   /* color: retro package print, single deliberate light look */
   --table: #E4D9BF;
@@ -18,7 +20,7 @@
   /* type */
   --f-cn: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
   --f-round: "M PLUS Rounded 1c", "Noto Sans SC", "Hiragino Maru Gothic ProN", sans-serif;
-  --f-hand: "ZCOOL KuaiLe", "Hannotate SC", "Kaiti SC", cursive;
+  --f-hand: "Xiaolai DK", "Hannotate SC", "Kaiti SC", cursive;
   --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
   color-scheme: light;
 }
@@ -226,7 +228,7 @@ body {
 .no { margin: 0; font-family: var(--f-mono); font-size: 12px; letter-spacing: .12em; color: var(--umber); }
 .detail h2 { margin: 0; font-size: clamp(36px, 5vw, 52px); font-weight: 900; line-height: 1.1; letter-spacing: .04em; }
 .en { margin: -6px 0 0; font-family: var(--f-round); font-weight: 800; font-size: 13px; letter-spacing: .16em; color: var(--gray); }
-.desc { margin: 2px 0 0; font-family: var(--f-hand); font-size: 20px; line-height: 1.6; letter-spacing: .03em; color: var(--ink-2); max-width: 26em; text-wrap: pretty; }
+.desc { margin: 2px 0 0; font-family: var(--f-hand); font-size: 21px; line-height: 1.55; color: var(--ink-2); max-width: 26em; text-wrap: pretty; }
 .chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 0; padding: 0; list-style: none; }
 .chips li { font-size: 12px; font-weight: 700; padding: 1px 10px 2px; border: 1.5px solid var(--ink); border-radius: 999px; }
 .go {
@@ -263,7 +265,7 @@ body {
   .inside .no { font-size: 2.8cqw; }
   .inside .detail h2 { font-size: 9.5cqw; }
   .inside .en { margin-top: -1.2cqw; font-size: 2.9cqw; }
-  .inside .desc { margin-top: .4cqw; font-size: 4.8cqw; line-height: 1.55; }
+  .inside .desc { margin-top: .4cqw; font-size: 5.2cqw; line-height: 1.5; }
   .inside .chips { gap: 1.6cqw; }
   .inside .chips li { font-size: 3cqw; padding: .2cqw 2.4cqw .5cqw; border-width: .4cqw; }
   .inside .go { margin-top: 3cqw; gap: 3cqw; padding: 3cqw 4cqw; box-shadow: 1cqw 1.2cqw 0 var(--mustard); }
