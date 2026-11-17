@@ -251,6 +251,9 @@ body {
   .idle { text-align: center; }
   .idle .up { display: inline; }
   .idle .left { display: none; }
+  /* keep the hint's line box while open, so the centred pad doesn't jump down when it disappears */
+  .idle { transition: opacity .3s, visibility .3s; }
+  .idle[hidden] { display: block; visibility: hidden; opacity: 0; }
 
   /* the pad screen holds both views: the list, and one item's page */
   .inside:not(.reading) .detail, .inside.reading ol { display: none; }
