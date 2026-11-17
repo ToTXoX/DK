@@ -113,6 +113,38 @@ a { color: inherit; }
 .a-car { right: 11.5%; top: 68%; width: 29%; }
 .a-fine { right: 13%; bottom: 8.4%; margin: 0; text-align: right; font-family: var(--f-cn); font-weight: 700; font-size: 3.3cqw; line-height: 1.7; color: var(--ink); }
 .a-fine span { display: block; }
+/* idle motion on the cover. All four strips are cloned in the same frame, so their animations share a clock
+   and anything crossing a fold line stays in step. Paused while the pad is open (the art is folded away). */
+.a-banner { overflow: hidden; }
+.a-banner::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 22%; pointer-events: none;
+  background: linear-gradient(100deg, transparent, rgba(242,234,213,.28) 50%, transparent);
+  transform: translateX(-130%); animation: shine 6s ease-in-out 1.2s infinite;
+}
+@keyframes shine { 0% { transform: translateX(-130%); } 30%, 100% { transform: translateX(480%); } }
+
+.a-sprout { transform-origin: 50% 95%; animation: sway 3.8s ease-in-out infinite; }
+@keyframes sway { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+
+.a-zz { animation: duck 7s cubic-bezier(.4,0,.2,1) 2s infinite; }   /* ZUZU ducks into the cup and pops back */
+@keyframes duck { 0%, 100% { transform: translateY(0); } 8%, 22% { transform: translateY(30px); } 28% { transform: translateY(-5px); } 33% { transform: translateY(0); } }
+
+.a-head { animation: hop 5s ease-in-out .6s infinite; }
+@keyframes hop { 0%, 100% { transform: translateY(0); } 6% { transform: translateY(-5px); } 12% { transform: translateY(0); } 16% { transform: translateY(-2px); } 20% { transform: translateY(0); } }
+.a-eyes circle { transform-box: fill-box; transform-origin: center; animation: blink 4.2s 1.5s infinite; }
+@keyframes blink { 0%, 90%, 100% { transform: scaleY(1); } 94% { transform: scaleY(.1); } }
+
+.a-burst { transform-origin: 20% 80%; animation: pop 1.6s steps(1) infinite; }
+@keyframes pop { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12) rotate(-4deg); } }
+
+.a-car { transform-origin: 30% 90%; animation: rev 5.5s ease-in-out 3s infinite; }
+@keyframes rev {
+  0%, 100% { transform: none; }
+  4% { transform: translateY(-.5cqw); } 8% { transform: none; } 12% { transform: translateY(-.5cqw); } 16% { transform: none; }
+  22% { transform: translateX(-.8cqw) rotate(-3deg); } 30% { transform: translateX(1.4cqw) rotate(1deg); } 40% { transform: none; }
+}
+.stage.open .art, .stage.open .art *, .stage.open .art *::after { animation-play-state: paused; }
+
 .a-crease { top: 0; bottom: 0; width: 1.4cqw; transform: translateX(-50%); pointer-events: none;
   background: linear-gradient(90deg, transparent, rgba(107,92,72,.12) 40%, rgba(255,255,255,.3) 55%, transparent); }
 
