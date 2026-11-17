@@ -90,7 +90,10 @@
   }
 
   cover.addEventListener('click', () => setOpen(!stage.classList.contains('open')));
-  picks.forEach((b) => b.addEventListener('click', () => select(b.dataset.key)));
+  /* a shelf row opens from its price card or its plank; the product standing on it is just for show */
+  picks.forEach((b) => b.closest('li').addEventListener('click', (e) => {
+    if (!e.target.closest('.ico')) select(b.dataset.key);
+  }));
   back.addEventListener('click', () => {
     inside.classList.remove('reading');
     setHash(null);
