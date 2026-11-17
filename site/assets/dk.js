@@ -27,17 +27,17 @@
   const DATA = {
     zuzu: {
       no: 'No.01 / 03', name: '庭院日和', en: 'ZUZU · GARDEN DAYS',
-      desc: '一片 3D 小庭院，陪 ZUZU 待一会儿。',
+      desc: '水跃鱼的庭院小游戏，消磨时光。',
       chips: ['3D', '小游戏'], url: 'https://zuzu.usdts.de', host: 'zuzu.usdts.de'
     },
     x: {
       no: 'No.02 / 03', name: '冒冒', en: 'PEEKALA · 𝕏 SIDEBAR',
-      desc: '给 𝕏 加一个侧栏的书签小工具。',
+      desc: '提供侧栏、点赞特效、快速跳转，帮你更高效地刷 X。',
       chips: ['书签工具', '开源'], url: 'https://x.usdts.de', host: 'x.usdts.de'
     },
     '2w': {
       no: 'No.03 / 03', name: '二呜兄弟', en: 'RACING · 赛道竞速',
-      desc: '浏览器里的四驱车竞速，挑三个技能上路。',
+      desc: '法天象地版四驱车。',
       chips: ['竞速', '小游戏'], url: 'https://2w.usdts.de', host: '2w.usdts.de'
     }
   };
