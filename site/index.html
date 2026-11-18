@@ -107,9 +107,16 @@
       <div class="cover" id="cover">
             <div class="art" id="cover-art" aria-hidden="true">
               <svg class="frame" viewBox="0 0 300 400" preserveAspectRatio="none">
-                <g class="rough s-ink f-none" stroke-linecap="round">
-                  <path stroke-width="5.5" d="M7 23 H293 M17 13 V393 M283 13 V393 M7 383 H293"/>
-                  <rect stroke-width="3" x="29" y="36" width="242" height="334"/>
+                <!-- Draw the uneven frame directly so it paints with each folding strip. -->
+                <g class="s-ink f-none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke-width="5.5" d="M7 23 L42 22.4 92 23.2 146 22.7 205 23.5 252 22.6 293 23
+                    M17 13 L17.5 68 16.7 121 17.3 192 16.6 263 17.4 328 17 393
+                    M283 13 L282.6 73 283.5 133 282.7 191 283.4 265 282.8 343 283 393
+                    M7 383 L55 383.5 114 382.6 167 383.2 220 382.5 265 383.5 293 383"/>
+                  <path stroke-width="3" d="M29 36 L83 35.6 137 36.3 198 35.7 271 36
+                    L271.4 110 270.7 172 271.3 243 270.6 307 271 370
+                    L221 370.4 162 369.6 91 370.3 29 370
+                    L28.6 303 29.3 238 28.7 173 29.4 105 Z"/>
                 </g>
               </svg>
               <p class="a-kicker">新作オススメ</p>
