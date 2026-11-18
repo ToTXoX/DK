@@ -47,6 +47,55 @@
 
   /* phones: the info block lives inside the pad screen (list ⇄ detail); desktop: beside the pad */
   const small = matchMedia('(max-width: 820px)');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  let fold = [];
+
+  function resetFold() {
+    fold.forEach((animation) => animation.cancel());
+    fold = [];
+    cover.classList.remove('folding');
+  }
+  small.addEventListener('change', resetFold);
+  reducedMotion.addEventListener('change', resetFold);
+
+  function moveCover(open) {
+    if (!small.matches || reducedMotion.matches || !cover.animate) return;
+    if (!fold.length) {
+      const duration = 850;
+      const edges = [1, 0, -1];
+      const front = (edge) => Math.max(0, edge);
+      const back = (edge) => Math.max(0, -edge);
+      const layers = [
+        ['.s1 > .front', (edge) => `translateX(100%) scaleX(${front(edge)})`],
+        ['.s1 > .back', (edge) => `scaleX(${back(edge)})`],
+        ['.s2 > .front', (edge) => `translateX(${100 * (1 + edge)}%)`],
+        ['.s3 > .front', (edge) => `translateX(${100 * (2 + edge)}%) scaleX(${front(edge)})`],
+        ['.s3 > .back', (edge) => `translateX(${100 * (1 + edge)}%) scaleX(${back(edge)})`],
+        ['.pull', (edge) => `translateX(calc(${50 * (1 + edge)}cqw - ${100 * back(edge)}%)) scaleX(${Math.abs(edge)})`]
+      ];
+      const timing = { duration, easing: 'cubic-bezier(.65,.02,.25,1)', fill: 'both' };
+      fold = layers.map(([selector, project]) =>
+        cover.querySelector(selector).animate(edges.map((edge) => ({ transform: project(edge) })), timing));
+      for (const [selector, closed, opened] of [['.pf', 1, 0], ['.pb', 0, 1]]) {
+        fold.push(pull.querySelector(selector).animate([
+          { opacity: closed, offset: 0, easing: 'steps(1, end)' },
+          { opacity: opened, offset: .5 },
+          { opacity: opened, offset: 1 }
+        ], timing));
+      }
+      const first = fold[0];
+      first.onfinish = () => {
+        if (first.playState === 'finished' && fold[0] === first) resetFold();
+      };
+      fold.forEach((animation) => { animation.currentTime = open ? 0 : duration; });
+    }
+    cover.classList.add('folding');
+    fold.forEach((animation) => {
+      animation.updatePlaybackRate(open ? 1 : -1);
+      animation.play();
+    });
+  }
+
   const place = () => {
     if (small.matches) inside.appendChild(detail);
     else { info.insertBefore(detail, info.querySelector('noscript')); inside.classList.remove('reading'); }
@@ -78,6 +127,7 @@
   }
 
   function setOpen(open) {
+    moveCover(open);
     stage.classList.toggle('open', open);
     inside.inert = !open;
     pull.setAttribute('aria-label', open ? '合上' : '掀开');

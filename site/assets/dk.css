@@ -148,7 +148,9 @@ a { color: inherit; }
   4% { transform: translateY(-.5cqw); } 8% { transform: none; } 12% { transform: translateY(-.5cqw); } 16% { transform: none; }
   22% { transform: translateX(-.8cqw) rotate(-3deg); } 30% { transform: translateX(1.4cqw) rotate(1deg); } 40% { transform: none; }
 }
-.stage.open .art, .stage.open .art *, .stage.open .art *::after { animation-play-state: paused; }
+:is(.stage.open, .cover.folding) .art,
+:is(.stage.open, .cover.folding) .art *,
+:is(.stage.open, .cover.folding) .art *::after { animation-play-state: paused; }
 
 .a-crease { top: 0; bottom: 0; width: 1.4cqw; transform: translateX(-50%); pointer-events: none;
   background: linear-gradient(90deg, transparent, rgba(107,92,72,.12) 40%, rgba(255,255,255,.3) 55%, transparent); }
@@ -246,12 +248,6 @@ body {
 /* ---------- small screens ---------- */
 .goback { display: none; }
 
-@property --fold-edge {
-  syntax: "<number>";
-  inherits: true;
-  initial-value: 1;
-}
-
 @media (max-width: 820px) {
   .wrap { grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 28px; }
   .pad { max-width: 420px; padding-inline: 14px; }
@@ -272,7 +268,6 @@ body {
     --fold-back: max(0, -1 * var(--fold-edge));
     transform-style: flat;
     z-index: 1;
-    transition: --fold-edge 1s cubic-bezier(.65,.02,.25,1);
   }
   .stage.open .cover { --fold-edge: -1; }
   .seg { display: contents; transition: none; }
@@ -288,14 +283,14 @@ body {
   .s3 > .back { transform: translateX(calc((1 + var(--fold-edge)) * 100%)) scaleX(var(--fold-back)); }
 
   .cover .pull {
-    left: calc((1 + var(--fold-edge)) * 50%);
-    width: calc(4.6cqw * (var(--fold-front) + var(--fold-back)));
-    transform: translateX(calc(-4.6cqw * var(--fold-back)));
+    left: 0;
+    transform: translateX(calc(50cqw * (1 + var(--fold-edge)) - 100% * var(--fold-back)));
+    transform-origin: left center;
     transform-style: flat;
   }
-  .cover .pull > span { width: 4.6cqw; right: auto; transform-origin: left center; transition: none; }
-  .cover .pull .pf { transform: scaleX(var(--fold-front)); }
-  .cover .pull .pb { transform: scaleX(var(--fold-back)); }
+  .cover .pull > span { pointer-events: none; transition: none; }
+  .cover .pull .pf { transform: none; opacity: var(--fold-front); }
+  .cover .pull .pb { transform: none; opacity: var(--fold-back); }
 
   /* the pad screen holds both views: the list, and one item's page */
   .inside:not(.reading) .detail, .inside.reading ol { display: none; }
